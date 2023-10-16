@@ -9,7 +9,13 @@
     <color name="white">#FFFFFFFF</color>
 
     <!-- Custom color -->
+    <color name="custom_background">#F4F4F4</color>
 
-    <color name="cus_black">#333</color>
+    <color name="custom_text">#333</color>
+
+    <color name="custom_card">#333</color>
+    <color name="custom_card_text">#E8E8E8</color>
+    <color name="custom_card_subtext">#BBB</color>
+
 
 </resources>

@@ -1,7 +1,6 @@
 package com.example.subscribble.activities
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -14,7 +13,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -39,6 +37,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.subscribble.R
+import com.example.subscribble.getDrawableResource
 import com.example.subscribble.navbar.NavScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -60,7 +59,8 @@ fun HomeScreen(/*navController: NavController*/) {
                 text = "Home",
                 fontWeight = FontWeight.Bold,
                 fontSize = 24.sp,
-                modifier = Modifier.padding(start = 26.dp, top = 22.dp, bottom = 22.dp)
+                modifier = Modifier.padding(start = 26.dp, top = 22.dp, bottom = 22.dp),
+                color = colorResource(id = R.color.custom_text)
             )
         }
     ) { contentPadding ->
@@ -75,9 +75,10 @@ fun HomeScreen(/*navController: NavController*/) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(start = 20.dp, end = 20.dp)
-                    .height(200.dp),
+                    .height(200.dp)
+                    .shadow(spotColor = Color.Black, elevation = 6.dp, ambientColor = Color.White),
                 shape = RoundedCornerShape(20.dp),
-                colors = CardDefaults.cardColors(containerColor = colorResource(id = R.color.cus_black)) //Custom Color
+                colors = CardDefaults.cardColors(containerColor = colorResource(id = R.color.custom_card)) //Custom Color
             ) {
 
                 Row(
@@ -90,67 +91,73 @@ fun HomeScreen(/*navController: NavController*/) {
                         text = "Total Price",
                         fontWeight = FontWeight.Bold,
                         fontSize = 20.sp,
-                        color = Color.White
+                        color = colorResource(id = R.color.custom_card_text)
                     )
                     Text(
                         text = "$formattedTotal THB",
                         fontWeight = FontWeight.Bold,
                         fontSize = 20.sp,
-                        color = Color(0xFF0AA6EC),
+                        color = colorResource(id = R.color.custom_card_text),
                         textAlign = TextAlign.Right,
                         modifier = Modifier.fillMaxWidth()
                     )
                 }
 
-                Spacer(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .weight(0.5f)
-                )
+                Column(modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f)
+                    .fillMaxHeight()) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 22.dp, start = 26.dp, end = 26.dp)
+                            .weight(1f)
+                    ) {
+                        Text(
+                            text = "Video Streaming",
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 14.sp,
+                            color = colorResource(id = R.color.custom_card_subtext)
+                        )
+                        Text(
+                            text = "$formattedvideoPrice THB",
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 14.sp,
+                            color = colorResource(id = R.color.custom_card_subtext),
+                            textAlign = TextAlign.Right,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    }
 
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 22.dp, start = 26.dp, end = 26.dp)
-                        .weight(1f)
-                ) {
-                    Text(
-                        text = "Video Streaming",
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 14.sp,
-                        color = Color(0xFF808080)
+                    Spacer(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .weight(0.5f)
                     )
-                    Text(
-                        text = "$formattedvideoPrice THB",
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 14.sp,
-                        color = Color(0xFF808080),
-                        textAlign = TextAlign.Right,
-                        modifier = Modifier.fillMaxWidth()
-                    )
+
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(start = 26.dp, end = 26.dp, bottom = 22.dp)
+                            .weight(1f)
+                    ) {
+                        Text(
+                            text = "Music Streaming",
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 14.sp,
+                            color = colorResource(id = R.color.custom_card_subtext)
+                        )
+                        Text(
+                            text = "$formattedmusicPrice THB",
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 14.sp,
+                            color = colorResource(id = R.color.custom_card_subtext),
+                            textAlign = TextAlign.Right,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    }
                 }
 
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 26.dp, end = 26.dp)
-                        .weight(1f)
-                ) {
-                    Text(
-                        text = "Music Streaming",
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 14.sp,
-                        color = Color(0xFF808080)
-                    )
-                    Text(
-                        text = "$formattedmusicPrice THB",
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 14.sp,
-                        color = Color(0xFF808080),
-                        textAlign = TextAlign.Right,
-                        modifier = Modifier.fillMaxWidth()
-                    )
-                }
             }
 
 
@@ -158,7 +165,8 @@ fun HomeScreen(/*navController: NavController*/) {
                 text = "Your subscriptions",
                 fontWeight = FontWeight.Bold,
                 fontSize = 18.sp,
-                modifier = Modifier.padding(start = 26.dp, top = 28.dp)
+                modifier = Modifier.padding(start = 26.dp, top = 28.dp),
+                color = colorResource(id = R.color.custom_text)
             )
 
             //Subscriptions
@@ -207,7 +215,7 @@ fun HomeScreen(/*navController: NavController*/) {
                         ) {
 
                             Image(
-                                painter = painterResource(id = R.drawable.netflix),
+                                painter = painterResource(id = getDrawableResource("netflix")),
                                 contentDescription = "",
                                 modifier = Modifier
                                     .size(60.dp)
@@ -230,18 +238,19 @@ fun HomeScreen(/*navController: NavController*/) {
                                             .fillMaxWidth()) {
                                             Text(
                                                 text = "Netflix",
+                                                color = colorResource(id = R.color.custom_text),
                                                 fontWeight = FontWeight.Bold,
                                                 fontSize = 18.sp,
                                             )
 
                                             Spacer(modifier = Modifier.width(5.dp))
 
-                                            Box(
-                                                modifier = Modifier
-                                                    .size(10.dp)
-                                                    .background(Color.Red, shape = CircleShape)
-                                                    .align(Alignment.CenterVertically)
-                                            )
+//                                            Box(
+//                                                modifier = Modifier
+//                                                    .size(10.dp)
+//                                                    .background(Color.Red, shape = CircleShape)
+//                                                    .align(Alignment.CenterVertically)
+//                                            )
 
                                         }
                                 }
@@ -249,6 +258,7 @@ fun HomeScreen(/*navController: NavController*/) {
                                     text = "199/month", modifier = Modifier
                                         .fillMaxSize()
                                         .weight(1f),
+                                    color = colorResource(id = R.color.custom_text),
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 16.sp,
 
@@ -256,14 +266,14 @@ fun HomeScreen(/*navController: NavController*/) {
 
                             }
 
-                            Box(
-                                modifier = Modifier
-                                    .fillMaxSize()
-                                    .padding(end = 20.dp)
-                                ,contentAlignment = Alignment.CenterEnd
-                            ){
-                                Text(text = "5 Oct", fontSize = 16.sp, fontWeight = FontWeight.Medium)
-                            }
+//                            Box(
+//                                modifier = Modifier
+//                                    .fillMaxSize()
+//                                    .padding(end = 20.dp)
+//                                ,contentAlignment = Alignment.CenterEnd
+//                            ){
+//                                Text(text = "5 Oct", fontSize = 16.sp, fontWeight = FontWeight.Medium, color = colorResource(id = R.color.custom_text))
+//                            }
 
                         }
                     }
