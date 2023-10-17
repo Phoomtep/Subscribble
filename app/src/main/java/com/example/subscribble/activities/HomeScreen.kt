@@ -1,6 +1,7 @@
 package com.example.subscribble.activities
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -36,6 +37,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.subscribble.PriceFormat
 import com.example.subscribble.R
 import com.example.subscribble.getDrawableResource
 import com.example.subscribble.navbar.NavScreen
@@ -76,7 +78,7 @@ fun HomeScreen(/*navController: NavController*/) {
                     .fillMaxWidth()
                     .padding(start = 20.dp, end = 20.dp)
                     .height(200.dp)
-                    .shadow(spotColor = Color.Black, elevation = 6.dp, ambientColor = Color.White),
+                    .shadow(elevation = 8.dp, shape = RoundedCornerShape(20.dp)),
                 shape = RoundedCornerShape(20.dp),
                 colors = CardDefaults.cardColors(containerColor = colorResource(id = R.color.custom_card)) //Custom Color
             ) {
@@ -97,7 +99,7 @@ fun HomeScreen(/*navController: NavController*/) {
                         text = "$formattedTotal THB",
                         fontWeight = FontWeight.Bold,
                         fontSize = 20.sp,
-                        color = colorResource(id = R.color.custom_card_text),
+                        color = colorResource(id = R.color.custom_card_total),
                         textAlign = TextAlign.Right,
                         modifier = Modifier.fillMaxWidth()
                     )
@@ -204,7 +206,7 @@ fun HomeScreen(/*navController: NavController*/) {
                             .shadow(elevation = 8.dp, shape = RoundedCornerShape(20.dp))
                             .clickable { println("add subscription") },
                         shape = RoundedCornerShape(20.dp),
-                        colors = CardDefaults.cardColors(containerColor = Color.White)
+                        colors = CardDefaults.cardColors(containerColor = colorResource(id = R.color.custom_list))
                     ) {
 
                         Row(
@@ -215,7 +217,7 @@ fun HomeScreen(/*navController: NavController*/) {
                         ) {
 
                             Image(
-                                painter = painterResource(id = getDrawableResource("netflix")),
+                                painter = painterResource(id = getDrawableResource("Netflix")),
                                 contentDescription = "",
                                 modifier = Modifier
                                     .size(60.dp)
@@ -255,10 +257,9 @@ fun HomeScreen(/*navController: NavController*/) {
                                         }
                                 }
                                 Text(
-                                    text = "199/month", modifier = Modifier
+                                    text = PriceFormat("199"), modifier = Modifier
                                         .fillMaxSize()
                                         .weight(1f),
-                                    color = colorResource(id = R.color.custom_text),
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 16.sp,
 

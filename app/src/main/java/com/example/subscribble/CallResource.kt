@@ -4,42 +4,42 @@ import androidx.compose.ui.graphics.Color
 
 fun getDrawableResource(inputString: String): Int {
     return when (inputString) {
-        "netflix" -> R.drawable.netflix
-        "appletv" -> R.drawable.appletv
-        "youtube" -> R.drawable.youtube
-        "disneyplus" -> R.drawable.disneyplus
+        "Netflix" -> R.drawable.netflix
+        "Apple TV" -> R.drawable.appletv
+        "Youtube" -> R.drawable.youtube
+        "Disney Plus" -> R.drawable.disneyplus
 
-        "applemusic" -> R.drawable.applemusic
-        "spotify" -> R.drawable.spotify
-        "youtubemusic" -> R.drawable.youtubemusic
+        "Apple Music" -> R.drawable.applemusic
+        "Spotify" -> R.drawable.spotify
+        "Youtube Music" -> R.drawable.youtubemusic
         else -> R.drawable.something_went_wrong
     }
 }
 
 fun classify(inputString: String): String {
     return when (inputString) {
-        "netflix" -> "video"
-        "appletv" -> "video"
-        "youtube" -> "video"
-        "disneyplus" -> "video"
+        "Netflix" -> "video"
+        "Apple TV" -> "video"
+        "Youtube" -> "video"
+        "Disney Plus" -> "video"
 
-        "applemusic" -> "music"
-        "spotify" -> "music"
-        "youtubemusic" -> "music"
-        else -> ""
+        "Apple Music" -> "music"
+        "Spotify" -> "music"
+        "Youtube Music" -> "music"
+        else -> "error"
     }
 }
 
 fun getApplicationColor(inputString: String): Color {
     return when (inputString){
-        "netflix" -> Color(0xFFAB060F)
-        "appletv" -> Color(0xFF2D2D2D)
-        "youtube" -> Color(0xFFF70000)
-        "disneyplus" -> Color(0xFF0060DE)
+        "Netflix" -> Color(0xFFAB060F)
+        "Apple TV" -> Color(0xFF2D2D2D)
+        "Youtube" -> Color(0xFFF70000)
+        "Disney Plus" -> Color(0xFF0060DE)
 
-        "applemusic" -> Color(0xFFF74F6B)
-        "spotify" -> Color(0xFF1BC357)
-        "youtubemusic" -> Color(0xFFF70000)
+        "Apple Music" -> Color(0xFFF74F6B)
+        "Spotify" -> Color(0xFF1BC357)
+        "Youtube Music" -> Color(0xFFF70000)
 
         else -> Color.White
     }
