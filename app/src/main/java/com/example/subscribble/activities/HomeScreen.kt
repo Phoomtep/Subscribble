@@ -1,6 +1,7 @@
 package com.example.subscribble.activities
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -46,15 +47,6 @@ import com.example.subscribble.navbar.NavScreen
 @Composable
 fun HomeScreen(/*navController: NavController*/) {
 
-    val total = 0f
-    val formattedTotal = String.format("%.2f", total)
-    val videoPrice = 0f
-    val formattedvideoPrice = String.format("%.2f", videoPrice)
-    val musicPrice = 0f
-    val formattedmusicPrice = String.format("%.2f", musicPrice)
-
-    val haveStreaming = true
-
     Scaffold(
         topBar = {
             Text(
@@ -66,6 +58,15 @@ fun HomeScreen(/*navController: NavController*/) {
             )
         }
     ) { contentPadding ->
+
+        val total = 0f
+        val formattedTotal = String.format("%.2f", total)
+        val videoPrice = 0f
+        val formattedvideoPrice = String.format("%.2f", videoPrice)
+        val musicPrice = 0f
+        val formattedmusicPrice = String.format("%.2f", musicPrice)
+
+        val haveStreaming = true
 
         Column(
             modifier = Modifier
@@ -162,14 +163,19 @@ fun HomeScreen(/*navController: NavController*/) {
 
             }
 
+            Row(modifier = Modifier
+                .padding(start = 26.dp, end = 26.dp, top = 28.dp)
+                .fillMaxWidth()) {
+                Text(
+                    text = "Your subscriptions",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 18.sp,
+                    color = colorResource(id = R.color.custom_text)
+                )
 
-            Text(
-                text = "Your subscriptions",
-                fontWeight = FontWeight.Bold,
-                fontSize = 18.sp,
-                modifier = Modifier.padding(start = 26.dp, top = 28.dp),
-                color = colorResource(id = R.color.custom_text)
-            )
+
+
+            }
 
             //Subscriptions
 

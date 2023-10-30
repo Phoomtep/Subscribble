@@ -1,6 +1,8 @@
 package com.example.subscribble.activities
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -11,6 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -91,7 +94,7 @@ fun ShowDetailScreen(/*navController: NavController*/) {
                             painter = painterResource(id = getDrawableResource(app)),
                             contentDescription = "",
                             modifier = Modifier
-                                .size(80.dp)
+                                .size(64.dp)
                                 .clip(RoundedCornerShape(20.dp))
                         )
 
@@ -144,7 +147,7 @@ fun ShowDetailScreen(/*navController: NavController*/) {
 
                     }
 
-                    Row(modifier = Modifier.padding(top = 22.dp)){
+                    Row {
                         Text(
                             text = "Plan",
                             fontWeight = FontWeight.Bold,
@@ -178,19 +181,129 @@ fun ShowDetailScreen(/*navController: NavController*/) {
                         )
                     }
 
-                    Text(
-                        text = "Usage", fontWeight = FontWeight.Bold,
-                        fontSize = 18.sp,
-                        color = colorResource(id = R.color.custom_text),
-                        modifier = Modifier.padding(top = 22.dp)
-                    )
+                    Row(modifier = Modifier.padding(top = 12.dp)){
+                        Text(
+                            text = "Usage",
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 18.sp,
+                            color = colorResource(id = R.color.custom_text)
+                        )
+//                        Text(
+//                            text = "hr",
+//                            fontWeight = FontWeight.Bold,
+//                            fontSize = 16.sp,
+//                            color = colorResource(id = R.color.custom_text),
+//                            textAlign = TextAlign.Right,
+//                            modifier = Modifier.fillMaxWidth()
+//                        )
+                    }
 
-                    Text(
-                        text = "Price per usage", fontWeight = FontWeight.Bold,
-                        fontSize = 18.sp,
-                        color = colorResource(id = R.color.custom_text),
-                        modifier = Modifier.padding(top = 22.dp)
-                    )
+                    Row(modifier = Modifier.padding(top = 4.dp)){
+                        Text(
+                            text = "Sep",
+                            fontSize = 16.sp,
+                            color = colorResource(id = R.color.custom_text_light)
+                        )
+                        Text(
+                            text = "20hr",
+                            fontSize = 16.sp,
+                            color = colorResource(id = R.color.custom_text_light),
+                            textAlign = TextAlign.Right,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    }
+
+                    Row(modifier = Modifier.padding(top = 4.dp)){
+                        Text(
+                            text = "Aug",
+                            fontSize = 16.sp,
+                            color = colorResource(id = R.color.custom_text_light)
+                        )
+                        Text(
+                            text = "18hr",
+                            fontSize = 16.sp,
+                            color = colorResource(id = R.color.custom_text_light),
+                            textAlign = TextAlign.Right,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    }
+
+                    Row(modifier = Modifier.padding(top = 4.dp)){
+                        Text(
+                            text = "Jul",
+                            fontSize = 16.sp,
+                            color = colorResource(id = R.color.custom_text_light)
+                        )
+                        Text(
+                            text = "4hr",
+                            fontSize = 16.sp,
+                            color = colorResource(id = R.color.custom_text_light),
+                            textAlign = TextAlign.Right,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    }
+
+                    Row(modifier = Modifier.padding(top = 12.dp)){
+                        Text(
+                            text = "Price per usage",
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 18.sp,
+                            color = colorResource(id = R.color.custom_text)
+                        )
+                        Text(
+                            text = "THB/hr",
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 16.sp,
+                            color = colorResource(id = R.color.custom_text),
+                            textAlign = TextAlign.Right,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    }
+
+                    Row(modifier = Modifier.padding(top = 4.dp)){
+                        Text(
+                            text = "Sep",
+                            fontSize = 16.sp,
+                            color = colorResource(id = R.color.custom_text_light)
+                        )
+                        Text(
+                            text = "8.45",
+                            fontSize = 16.sp,
+                            color = colorResource(id = R.color.custom_text_light),
+                            textAlign = TextAlign.Right,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    }
+
+                    Row(modifier = Modifier.padding(top = 4.dp)){
+                        Text(
+                            text = "Aug",
+                            fontSize = 16.sp,
+                            color = colorResource(id = R.color.custom_text_light)
+                        )
+                        Text(
+                            text = "9.38",
+                            fontSize = 16.sp,
+                            color = colorResource(id = R.color.custom_text_light),
+                            textAlign = TextAlign.Right,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    }
+
+                    Row(modifier = Modifier.padding(top = 4.dp)){
+                        Text(
+                            text = "Jul",
+                            fontSize = 16.sp,
+                            color = colorResource(id = R.color.custom_text_light)
+                        )
+                        Text(
+                            text = "42.25",
+                            fontSize = 16.sp,
+                            color = colorResource(id = R.color.custom_text_light),
+                            textAlign = TextAlign.Right,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    }
 
                     Text(
                         text = "Note", fontWeight = FontWeight.Bold,
@@ -201,7 +314,20 @@ fun ShowDetailScreen(/*navController: NavController*/) {
 
                     Text(text = note)
 
-
+                    Row(modifier = Modifier
+                        .fillMaxSize()
+                        .padding(bottom = 20.dp)
+                        , horizontalArrangement = Arrangement.Center
+                        , verticalAlignment = Alignment.Bottom) {
+                        IconButton(onClick = { /*TODO*/ }, modifier = Modifier
+                            .clip(CircleShape)
+                            .background(Color(0xFF333333))
+                            .size(46.dp)) {
+                            Icon(painter = painterResource(id = R.drawable.baseline_edit_24),
+                                contentDescription = "edit", tint = Color.White,
+                                modifier = Modifier.size(24.dp))
+                        }
+                    }
 
                 }
                 
