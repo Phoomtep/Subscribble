@@ -181,6 +181,23 @@ fun ShowDetailScreen(/*navController: NavController*/) {
                         )
                     }
 
+                    Row(modifier = Modifier.padding(top = 4.dp)){
+                        Text(
+                            text = "Payment method",
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 18.sp,
+                            color = colorResource(id = R.color.custom_text)
+                        )
+                        Text(
+                            text = "-",
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 16.sp,
+                            color = colorResource(id = R.color.custom_text_light),
+                            textAlign = TextAlign.Right,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    }
+
                     Row(modifier = Modifier.padding(top = 12.dp)){
                         Text(
                             text = "Usage",
