@@ -1,8 +1,6 @@
 package com.example.subscribble.activities
-
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -20,11 +18,16 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -37,25 +40,35 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import com.example.subscribble.PriceFormat
 import com.example.subscribble.R
 import com.example.subscribble.getDrawableResource
-import com.example.subscribble.navbar.NavScreen
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(/*navController: NavController*/) {
 
+    var expanded by remember{ mutableStateOf(false) }
+    var selectedCard by remember { mutableStateOf("Total") }
+
+    val cardList = mutableListOf("Total Price")
+
+    val getCards = listOf("Card1","Card2") //เพิ่ม Card
+    for (card in getCards) {
+        cardList.add(card)
+    }
+
     Scaffold(
         topBar = {
-            Text(
-                text = "Home",
-                fontWeight = FontWeight.Bold,
-                fontSize = 24.sp,
-                modifier = Modifier.padding(start = 26.dp, top = 22.dp, bottom = 22.dp),
-                color = colorResource(id = R.color.custom_text)
-            )
+                Text(
+                    text = "Home",
+                    modifier = Modifier.padding(start = 26.dp, top = 22.dp, bottom = 22.dp),
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 24.sp,
+                    color = colorResource(id = R.color.custom_text)
+                )
         }
     ) { contentPadding ->
 
@@ -164,16 +177,36 @@ fun HomeScreen(/*navController: NavController*/) {
             }
 
             Row(modifier = Modifier
-                .padding(start = 26.dp, end = 26.dp, top = 28.dp)
-                .fillMaxWidth()) {
+                .padding(start = 26.dp, end = 26.dp, top = 10.dp)
+                .fillMaxWidth()
+                , verticalAlignment = Alignment.CenterVertically) {
                 Text(
                     text = "Your subscriptions",
                     fontWeight = FontWeight.Bold,
                     fontSize = 18.sp,
-                    color = colorResource(id = R.color.custom_text)
+                    color = colorResource(id = R.color.custom_text),
                 )
 
+                Box(modifier = Modifier.fillMaxWidth()) {
+                    TextButton(onClick = { expanded = true }, modifier = Modifier.align(Alignment.CenterEnd)) {
+                        Text(text = selectedCard,
+                            fontWeight = FontWeight.SemiBold,
+                            fontSize = 16.sp,
+                            color = colorResource(id = R.color.custom_card_total))
 
+                        Box(modifier = Modifier.padding(top = 40.dp)) {
+                            DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false },
+                                modifier = Modifier
+                                    .background(Color.White)) {
+                                cardList.forEach{
+                                    DropdownMenuItem(onClick = {
+                                        expanded = false
+                                        selectedCard = it},text = {Text(it, color = colorResource(id = R.color.custom_text_light))})
+                                }
+                            }
+                        }
+                    }
+                }
 
             }
 
@@ -186,7 +219,7 @@ fun HomeScreen(/*navController: NavController*/) {
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(120.dp)
-                            .padding(start = 20.dp, end = 20.dp, top = 20.dp)
+                            .padding(start = 20.dp, end = 20.dp, top = 10.dp)
                             .shadow(elevation = 8.dp, shape = RoundedCornerShape(20.dp))
                             .clickable { /*navController.navigate(NavScreen.AddSubscription.route)*/ },
                         shape = RoundedCornerShape(20.dp),
@@ -208,7 +241,7 @@ fun HomeScreen(/*navController: NavController*/) {
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(100.dp)
-                            .padding(start = 20.dp, end = 20.dp, top = 20.dp)
+                            .padding(start = 20.dp, end = 20.dp, top = 10.dp)
                             .shadow(elevation = 8.dp, shape = RoundedCornerShape(20.dp))
                             .clickable { println("add subscription") },
                         shape = RoundedCornerShape(20.dp),

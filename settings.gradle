@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Subscribble"
-include ':app'
+include (':app')
