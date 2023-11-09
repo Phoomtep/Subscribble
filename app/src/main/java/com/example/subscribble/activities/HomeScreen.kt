@@ -2,6 +2,7 @@ package com.example.subscribble.activities
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -45,6 +46,7 @@ import com.example.subscribble.R
 import com.example.subscribble.getDrawableResource
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.input.pointer.pointerInput
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -81,6 +83,8 @@ fun HomeScreen(/*navController: NavController*/) {
 
         val haveStreaming = true
 
+        val expandedCardMenu = remember { mutableStateOf(false) }
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -92,7 +96,15 @@ fun HomeScreen(/*navController: NavController*/) {
                     .fillMaxWidth()
                     .padding(start = 20.dp, end = 20.dp)
                     .height(200.dp)
-                    .shadow(elevation = 8.dp, shape = RoundedCornerShape(20.dp)),
+                    .shadow(elevation = 8.dp, shape = RoundedCornerShape(20.dp))
+                    .pointerInput(Unit){
+                        detectTapGestures(
+                            onLongPress = {
+                                expandedCardMenu   .value = true
+                            }
+                        )
+                    }
+                    ,
                 shape = RoundedCornerShape(20.dp),
                 colors = CardDefaults.cardColors(containerColor = colorResource(id = R.color.custom_card)) //Custom Color
             ) {
@@ -172,6 +184,34 @@ fun HomeScreen(/*navController: NavController*/) {
                             modifier = Modifier.fillMaxWidth()
                         )
                     }
+                }
+
+                DropdownMenu(
+                    expanded = expandedCardMenu.value,
+                    onDismissRequest = { expandedCardMenu.value = false },
+                    modifier = Modifier
+                        .background(Color.White)
+                ) {
+                    DropdownMenuItem(
+                        text = { Text("Edit") },
+                        onClick = {
+                            //edit
+                        }
+                    )
+
+                    DropdownMenuItem(
+                        text = { Text("Delete") },
+                        onClick = {
+                            //delete
+                        }
+                    )
+
+                    DropdownMenuItem(
+                        text = { Text("Cancel") },
+                        onClick = {
+                            expandedCardMenu.value = false
+                        }
+                    )
                 }
 
             }
