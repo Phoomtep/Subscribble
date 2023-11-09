@@ -100,7 +100,7 @@ fun HomeScreen(/*navController: NavController*/) {
                     .pointerInput(Unit){
                         detectTapGestures(
                             onLongPress = {
-                                expandedCardMenu   .value = true
+                                expandedCardMenu.value = true
                             }
                         )
                     }
