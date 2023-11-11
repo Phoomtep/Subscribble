@@ -86,7 +86,6 @@ fun HomeScreen(/*navController: NavController*/) {
 //
 //            }
 //        }
-
         AlertDialog(
             onDismissRequest = { showCardMenu = false },
             icon = { Icon(painter = painterResource(id = R.drawable.baseline_delete_24), contentDescription = "delete") },
@@ -112,13 +111,13 @@ fun HomeScreen(/*navController: NavController*/) {
 
     Scaffold(
         topBar = {
-                Text(
-                    text = "Home",
-                    modifier = Modifier.padding(start = 26.dp, top = 22.dp, bottom = 22.dp),
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 24.sp,
-                    color = colorResource(id = R.color.custom_text)
-                )
+            Text(
+                text = "Home",
+                modifier = Modifier.padding(start = 26.dp, top = 22.dp, bottom = 22.dp),
+                fontWeight = FontWeight.Bold,
+                fontSize = 24.sp,
+                color = colorResource(id = R.color.custom_text)
+            )
         }
     ) { contentPadding ->
 
@@ -149,9 +148,13 @@ fun HomeScreen(/*navController: NavController*/) {
 //                                expandedCardMenu.value = true
                                 showCardMenu = true
                             }
+                        , onDoubleTap = {
+                            // to edit card
+//                                showCardMenu = true
+                            }
                         )
                     }
-                    ,
+                ,
                 shape = RoundedCornerShape(20.dp),
                 colors = CardDefaults.cardColors(containerColor = colorResource(id = R.color.custom_card)) //Custom Color
             ) {
@@ -334,16 +337,16 @@ fun HomeScreen(/*navController: NavController*/) {
                                     .weight(1f)
                                     ,contentAlignment = Alignment.BottomStart
                                 ) {
-                                        Row(modifier = Modifier
-                                            .fillMaxWidth()) {
-                                            Text(
-                                                text = "Netflix",
-                                                color = colorResource(id = R.color.custom_text),
-                                                fontWeight = FontWeight.Bold,
-                                                fontSize = 18.sp,
-                                            )
+                                    Row(modifier = Modifier
+                                        .fillMaxWidth()) {
+                                        Text(
+                                            text = "Netflix",
+                                            color = colorResource(id = R.color.custom_text),
+                                            fontWeight = FontWeight.Bold,
+                                            fontSize = 18.sp,
+                                        )
 
-                                            Spacer(modifier = Modifier.width(5.dp))
+                                        Spacer(modifier = Modifier.width(5.dp))
 
 //                                            Box(
 //                                                modifier = Modifier
@@ -352,7 +355,7 @@ fun HomeScreen(/*navController: NavController*/) {
 //                                                    .align(Alignment.CenterVertically)
 //                                            )
 
-                                        }
+                                    }
                                 }
                                 Text(
                                     text = PriceFormat("199"), modifier = Modifier
@@ -361,7 +364,7 @@ fun HomeScreen(/*navController: NavController*/) {
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 16.sp,
 
-                                )
+                                    )
 
                             }
 
