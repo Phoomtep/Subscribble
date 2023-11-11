@@ -63,37 +63,18 @@ fun HomeScreen(/*navController: NavController*/) {
         cardList.add(card)
     }
 
-    var showCardMenu by remember { mutableStateOf(false) }
     val cardToDelete = "Card1"
+    var showCardDelete by remember { mutableStateOf(false) }
 
-    if (showCardMenu){
-//        Dialog(onDismissRequest = { showCardMenu = false }) {
-//
-//            Card(
-//                shape = RoundedCornerShape(8.dp),
-//                modifier = Modifier
-//                    .padding(horizontal = 16.dp, vertical = 8.dp)
-//                    .background(Color.White)
-//                    .shadow(elevation = 8.dp, shape = RoundedCornerShape(20.dp))
-//            ) {
-//                Column(
-//                    modifier = Modifier
-//                        .fillMaxWidth()
-//                        .padding(vertical = 16.dp)
-//                ) {
-//                    Text(text = "Hello")
-//                }
-//
-//            }
-//        }
+    if (showCardDelete){
         AlertDialog(
-            onDismissRequest = { showCardMenu = false },
+            onDismissRequest = { showCardDelete = false },
             icon = { Icon(painter = painterResource(id = R.drawable.baseline_delete_24), contentDescription = "delete") },
             title = { Text(text = "Delete") },
             text = { Text(text = "Do you want to delete \"$cardToDelete\"?") },
             dismissButton = {
                 TextButton(onClick = {
-                    showCardMenu = false
+                    showCardDelete = false
                 }) {
                     Text(text = "Cancel")
                 }
@@ -101,9 +82,34 @@ fun HomeScreen(/*navController: NavController*/) {
             confirmButton = {
                 TextButton(onClick = {
                     //ลบ Card
-                    showCardMenu = false
+                    showCardDelete = false
                 }) {
                     Text(text = "Confirm")
+                }
+            }
+        )
+    }
+
+    var showCardEdit by remember { mutableStateOf(false) }
+
+    if (showCardEdit){
+        AlertDialog(
+            onDismissRequest = { showCardEdit = false },
+            icon = { Icon(painter = painterResource(id = R.drawable.baseline_edit_24), contentDescription = "delete") },
+            title = { Text(text = "Edit") },
+            text = { Text(text = "Do you want to edit \"$cardToDelete\"?") },
+            dismissButton = {
+                TextButton(onClick = {
+                    showCardEdit = false
+                }) {
+                    Text(text = "Cancel")
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = {
+                    showCardEdit = false
+                }) {
+                    Text(text = "Edit")
                 }
             }
         )
@@ -146,10 +152,10 @@ fun HomeScreen(/*navController: NavController*/) {
                         detectTapGestures(
                             onLongPress = {
 //                                expandedCardMenu.value = true
-                                showCardMenu = true
+                                showCardDelete = true
                             }
                         , onDoubleTap = {
-                            // to edit card
+                                showCardEdit = true
 //                                showCardMenu = true
                             }
                         )
