@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DropdownMenu
@@ -62,6 +63,52 @@ fun HomeScreen(/*navController: NavController*/) {
         cardList.add(card)
     }
 
+    var showCardMenu by remember { mutableStateOf(false) }
+    val cardToDelete = "Card1"
+
+    if (showCardMenu){
+//        Dialog(onDismissRequest = { showCardMenu = false }) {
+//
+//            Card(
+//                shape = RoundedCornerShape(8.dp),
+//                modifier = Modifier
+//                    .padding(horizontal = 16.dp, vertical = 8.dp)
+//                    .background(Color.White)
+//                    .shadow(elevation = 8.dp, shape = RoundedCornerShape(20.dp))
+//            ) {
+//                Column(
+//                    modifier = Modifier
+//                        .fillMaxWidth()
+//                        .padding(vertical = 16.dp)
+//                ) {
+//                    Text(text = "Hello")
+//                }
+//
+//            }
+//        }
+        AlertDialog(
+            onDismissRequest = { showCardMenu = false },
+            icon = { Icon(painter = painterResource(id = R.drawable.baseline_delete_24), contentDescription = "delete") },
+            title = { Text(text = "Delete") },
+            text = { Text(text = "Do you want to delete \"$cardToDelete\"?") },
+            dismissButton = {
+                TextButton(onClick = {
+                    showCardMenu = false
+                }) {
+                    Text(text = "Cancel")
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = {
+                    //ลบ Card
+                    showCardMenu = false
+                }) {
+                    Text(text = "Confirm")
+                }
+            }
+        )
+    }
+
     Scaffold(
         topBar = {
                 Text(
@@ -83,8 +130,6 @@ fun HomeScreen(/*navController: NavController*/) {
 
         val haveStreaming = true
 
-        val expandedCardMenu = remember { mutableStateOf(false) }
-
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -97,10 +142,11 @@ fun HomeScreen(/*navController: NavController*/) {
                     .padding(start = 20.dp, end = 20.dp)
                     .height(200.dp)
                     .shadow(elevation = 8.dp, shape = RoundedCornerShape(20.dp))
-                    .pointerInput(Unit){
+                    .pointerInput(Unit) {
                         detectTapGestures(
                             onLongPress = {
-                                expandedCardMenu.value = true
+//                                expandedCardMenu.value = true
+                                showCardMenu = true
                             }
                         )
                     }
@@ -184,34 +230,6 @@ fun HomeScreen(/*navController: NavController*/) {
                             modifier = Modifier.fillMaxWidth()
                         )
                     }
-                }
-
-                DropdownMenu(
-                    expanded = expandedCardMenu.value,
-                    onDismissRequest = { expandedCardMenu.value = false },
-                    modifier = Modifier
-                        .background(Color.White)
-                ) {
-                    DropdownMenuItem(
-                        text = { Text("Edit") },
-                        onClick = {
-                            //edit
-                        }
-                    )
-
-                    DropdownMenuItem(
-                        text = { Text("Delete") },
-                        onClick = {
-                            //delete
-                        }
-                    )
-
-                    DropdownMenuItem(
-                        text = { Text("Cancel") },
-                        onClick = {
-                            expandedCardMenu.value = false
-                        }
-                    )
                 }
 
             }
