@@ -86,6 +86,7 @@ fun HomeScreen(/*navController: NavController*/) {
 //
 //            }
 //        }
+
         AlertDialog(
             onDismissRequest = { showCardMenu = false },
             icon = { Icon(painter = painterResource(id = R.drawable.baseline_delete_24), contentDescription = "delete") },
