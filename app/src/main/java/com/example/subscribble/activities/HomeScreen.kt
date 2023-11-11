@@ -71,7 +71,7 @@ fun HomeScreen(/*navController: NavController*/) {
             onDismissRequest = { showCardDelete = false },
             icon = { Icon(painter = painterResource(id = R.drawable.baseline_delete_24), contentDescription = "delete") },
             title = { Text(text = "Delete") },
-            text = { Text(text = "Do you want to delete \"$cardToDelete\"?") },
+            text = { Text(text = "Do you want to delete \"$cardToDelete\"? If you delete it,\nyou will not be able to recover the data.") },
             dismissButton = {
                 TextButton(onClick = {
                     showCardDelete = false
@@ -97,7 +97,7 @@ fun HomeScreen(/*navController: NavController*/) {
             onDismissRequest = { showCardEdit = false },
             icon = { Icon(painter = painterResource(id = R.drawable.baseline_edit_24), contentDescription = "delete") },
             title = { Text(text = "Edit") },
-            text = { Text(text = "Do you want to edit \"$cardToDelete\"?") },
+            text = { Text(text = "Do you want to edit \"$cardToDelete\" ?") },
             dismissButton = {
                 TextButton(onClick = {
                     showCardEdit = false
@@ -155,7 +155,8 @@ fun HomeScreen(/*navController: NavController*/) {
                                 showCardDelete = true
                             }
                         , onDoubleTap = {
-                                showCardEdit = true
+                            //ไปหน้า Edit
+//                                showCardEdit = true
 //                                showCardMenu = true
                             }
                         )
